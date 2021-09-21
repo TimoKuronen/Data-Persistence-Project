@@ -66,11 +66,14 @@ public class MainManager : MonoBehaviour
     {
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
+        PlayerDataSetup.Instance.PlayerScore = m_Points;
     }
 
     public void GameOver()
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        PlayerDataSetup.Instance.SaveCurrentData();
+        PlayerDataSetup.Instance.LoadData();
     }
 }
